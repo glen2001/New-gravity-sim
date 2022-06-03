@@ -4,7 +4,7 @@ let star
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for(let i = 0; i < 10; i++) {
-    bodies.push(new body(2, width/2, random(height/3), 5, 0))
+    bodies.push(new body(5, width/2, random(height/3), 5, 0))
   }
   star = new body(10000, width/2, height/2, 0, 0);
   bodies.push(star)
