@@ -28,7 +28,7 @@ function body(mass, x, y, velx, vely) {
         this.pos.add(this.vel);
         this.acc.set(0, 0);
         this.path.push(this.pos.copy());
-        if(this.path.length > 1000) {
+        if(this.path.length > 1500) {
             this.path.splice(0, 1);
         }
     }
@@ -36,6 +36,7 @@ function body(mass, x, y, velx, vely) {
     body.prototype.applyForce = function(force) {
         let inertia = p5.Vector.div(force, this.mass);
         this.acc.add(inertia);
+        line(this.pos.x, this.pos.y, this.pos.x + (force.x * 100) , this.pos.y + (force.y * 100))
     }
 
     body.prototype.attract = function(other) {
@@ -43,6 +44,6 @@ function body(mass, x, y, velx, vely) {
         let distanceSquared = attractionForce.magSq();
         let magnitude = this.G * (this.mass * other.mass) / (distanceSquared + this.epsilon);
         attractionForce.setMag(magnitude);
-        other.applyForce(attractionForce);stroke(255);
+        other.applyForce(attractionForce);
     }
 }
