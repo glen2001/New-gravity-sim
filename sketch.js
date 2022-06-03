@@ -1,20 +1,14 @@
 let bodies = []
-let star
-let planet
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  planet = new body(10, width/2, height/3, 4.5, 0);
-  star = new body(5000, width/2, height/2, 0, 0);
-  bodies.push(planet)
-  bodies.push(star)
-
-  
-
+  for(let i = 0; i < 2; i++) {
+    bodies.push(new body(random(1,1000), random(width/4, 3*width/4), random(height/4, 3*height/4), random(-1,1), random(-1,1)))
+  }
 }
 
 function draw() {
-  background(68, 103, 128, 10);
+  background(68, 103, 128);
   globalAttract(bodies);
   drawBodies(bodies);
   updateBodies(bodies);
