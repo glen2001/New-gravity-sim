@@ -27,6 +27,7 @@ function body(mass, x, y, velx, vely) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
         this.acc.set(0, 0);
+        
         this.path.push(this.pos.copy());
         if(this.path.length > 1500) {
             this.path.splice(0, 1);
@@ -36,7 +37,6 @@ function body(mass, x, y, velx, vely) {
     body.prototype.applyForce = function(force) {
         let inertia = p5.Vector.div(force, this.mass);
         this.acc.add(inertia);
-        line(this.pos.x, this.pos.y, this.pos.x + (force.x * 100) , this.pos.y + (force.y * 100))
     }
 
     body.prototype.attract = function(other) {

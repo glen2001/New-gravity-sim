@@ -1,10 +1,13 @@
 let bodies = []
+let star
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for(let i = 0; i < 2; i++) {
-    bodies.push(new body(random(1,1000), random(width/4, 3*width/4), random(height/4, 3*height/4), random(-1,1), random(-1,1)))
+  for(let i = 0; i < 20; i++) {
+    bodies.push(new body(1, width/2, random(height/3), 5, 0))
   }
+  star = new body(10000, width/2, height/2, 0, 0);
+  bodies.push(star)
 }
 
 function draw() {
