@@ -1,13 +1,16 @@
 let bodies = []
 let star
+let planet
+
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for(let i = 0; i < 10; i++) {
-    bodies.push(new body(5, width/2, random(height/3), 5, 0))
-  }
+  planet = new body(5, width/2, height/3, 0, 0);
   star = new body(10000, width/2, height/2, 0, 0);
   bodies.push(star)
+  bodies.push(planet)
+  planet.vel.set(circularVelocity(star,planet))
 }
 
 function draw() {
@@ -15,8 +18,6 @@ function draw() {
   globalAttract(bodies);
   drawBodies(bodies);
   updateBodies(bodies);
-    
-
 }
 
 function drawBodies(bodyArray) {
@@ -39,4 +40,9 @@ function globalAttract(bodyArray) {
       }
     }
   }
+}
+
+function circularVelocity(body1, body2) {
+  let distnace = p5.Vector.dist(body1.getPos(), body2.getPos())
+  return sqrt((body1.mass + body2.mass) / distnace);
 }

@@ -8,6 +8,10 @@ function body(mass, x, y, velx, vely) {
     this.G = 1;
     this.epsilon = 5
 
+    body.prototype.getPos = function() {
+        return this.pos
+    }
+
     body.prototype.draw = function() {
         noStroke();
         fill(255)
