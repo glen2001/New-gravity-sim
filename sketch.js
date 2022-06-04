@@ -1,16 +1,24 @@
 let bodies = []
 let star
 let planet
+let moon
+let planet2
 
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  planet2 = new body(10, width/3, height - 300, 0, 0)
+  moon = new body(1, width/2, height/4 - 7, 0, 0);
   planet = new body(5, width/2, height/4, 0, 0);
   star = new body(10000, width/2, height/2, 0, 0);
-  bodies.push(star)
-  bodies.push(planet)
-  planet.vel.set(circularVelocity(star,planet))
+  bodies.push(star);
+  bodies.push(planet);
+  bodies.push(moon);
+  bodies.push(planet2);
+  planet2.vel.set(circularVelocity(star, planet2))
+  moon.vel.set(circularVelocity(planet, moon) + circularVelocity(star,planet))
+  planet.vel.set(circularVelocity(star, planet));
 }
 
 function draw() {
