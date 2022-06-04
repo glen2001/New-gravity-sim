@@ -6,7 +6,7 @@ let planet
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  planet = new body(5, width/2, height/3, 0, 0);
+  planet = new body(5, width/2, height/4, 0, 0);
   star = new body(10000, width/2, height/2, 0, 0);
   bodies.push(star)
   bodies.push(planet)
@@ -46,3 +46,4 @@ function circularVelocity(body1, body2) {
   let distnace = p5.Vector.dist(body1.getPos(), body2.getPos())
   return sqrt((body1.mass + body2.mass) / distnace);
 }
+
