@@ -26,6 +26,7 @@ function draw() {
   globalAttract(bodies);
   drawBodies(bodies);
   updateBodies(bodies);
+  translate(star.pos.x, star.pos.y)
 }
 
 function drawBodies(bodyArray) {
