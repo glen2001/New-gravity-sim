@@ -33,7 +33,7 @@ function body(mass, x, y, velx, vely) {
         this.acc.set(0, 0);
         
         this.path.push(this.pos.copy());
-        if(this.path.length > 1500) {
+        if(this.path.length > 500) {
             this.path.splice(0, 1);
         }
     }

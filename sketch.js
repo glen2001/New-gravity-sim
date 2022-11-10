@@ -8,16 +8,16 @@ let planet2
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  planet2 = new body(10, width/3, height - 300, 0, 0)
-  moon = new body(1, width/2, height/4 - 7, 0, 0);
-  planet = new body(5, width/2, height/4, 0, 0);
+  planet2 = new body(random(50), width/2, random(height/2), 0, 0)
+  moon = new body(random(50), width/2, random(height/2), 0, 0);
+  planet = new body(random(50), width/2, random(height/2), 0, 0);
   star = new body(10000, width/2, height/2, 0, 0);
   bodies.push(star);
   bodies.push(planet);
   bodies.push(moon);
   bodies.push(planet2);
   planet2.vel.set(circularVelocity(star, planet2))
-  moon.vel.set(circularVelocity(planet, moon) + circularVelocity(star,planet))
+  moon.vel.set(circularVelocity(star, moon))
   planet.vel.set(circularVelocity(star, planet));
 }
 
@@ -26,7 +26,6 @@ function draw() {
   globalAttract(bodies);
   drawBodies(bodies);
   updateBodies(bodies);
-  translate(star.pos.x, star.pos.y)
 }
 
 function drawBodies(bodyArray) {
