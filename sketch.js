@@ -1,20 +1,15 @@
 let bodies = []
-let star
-let planet
-let moon
-let planet2
 let p1
 let p2
 let placing = false;
 let paused = true;
+let currentMass = 1;
 
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
-  star = new body(10000, width/2, height/2, 0, 0);
-  bodies.push(star);
 
   p1 = createVector();
   p2 = createVector();
@@ -29,6 +24,7 @@ function draw() {
     globalAttract(bodies);
     updateBodies(bodies);
   }
+
   if(paused === true) {
     textSize(32);
     noStroke();
@@ -40,6 +36,11 @@ function draw() {
     stroke(255, 0, 0);
     line(p1.x, p1.y, mouseX, mouseY);
   }
+
+  textSize(15);
+  noStroke();
+  fill(255);
+  text('Mass: '+ currentMass, width/20, height/8)
 }
 
 function drawBodies(bodyArray) {
@@ -79,7 +80,7 @@ function mouseClicked() {
     p2.x = mouseX;
     p2.y = mouseY;
 
-    bodies.push(new body(2 , p1.x, p1.y, (p2.x - p1.x) / 30, (p2.y - p1.y) / 30))
+    bodies.push(new body(currentMass , p1.x, p1.y, (p2.x - p1.x) / 30, (p2.y - p1.y) / 30))
     placing = false;
   }
 }
@@ -93,6 +94,10 @@ function keyPressed() {
       paused = false;
     }
   }
+}
+
+function mouseWheel(event) {
+  currentMass -= event.delta / 100;
 }
 
 

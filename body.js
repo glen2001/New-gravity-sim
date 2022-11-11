@@ -6,7 +6,7 @@ function body(mass, x, y, velx, vely) {
     this.acc = createVector(0, 0);
     this.path = [];
     this.G = 1;
-    this.epsilon = 5
+    this.epsilon = 5;
 
     body.prototype.getPos = function() {
         return this.pos
